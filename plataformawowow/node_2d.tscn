@@ -27,7 +27,7 @@ region = Rect2(30, 0, 15, 22)
 atlas = ExtResource("2_3t3rh")
 region = Rect2(45, 0, 15, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgfm1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xplct"]
 atlas = ExtResource("2_3t3rh")
 region = Rect2(15, 22, 15, 22)
 
@@ -60,7 +60,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_mx5su")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lgfm1")
+"texture": SubResource("AtlasTexture_xplct")
 }],
 "loop": true,
 "name": &"walk",
@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_cryhn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 3
-position = Vector2(333, 320)
+position = Vector2(333, 321)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_8exrs")
 animation = &"walk"
@@ -90,9 +90,11 @@ animation = &"walk"
 anchor_mode = 0
 ignore_rotation = false
 
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
+[node name="Buffer" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.1
 one_shot = true
+
+[node name="Coyote" type="Timer" parent="CharacterBody2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(21, 4)

@@ -1,16 +1,19 @@
 extends CharacterBody2D
 
 var jumping = false
-# Coyote Time
 var coyote_time = false
-# Jump Buffering
 var jump_buffer = false
-
-
 
 var velocidade = 300
 var gravidade = 10
 var pulo_forca = -300
+
+enum State {
+	IDLE,
+	WALK,
+	JUMP,
+	FALL
+}
 
 func _physics_process(delta):
 	
@@ -24,6 +27,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Pular") && is_on_floor():
 		velocity.y = pulo_forca
+		 
 	elif !is_on_floor():
 		$AnimatedSprite2D.play("falling")
 	velocity.y += gravidade
