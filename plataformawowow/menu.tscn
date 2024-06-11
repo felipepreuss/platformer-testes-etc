@@ -36,7 +36,7 @@ offset_bottom = 630.0
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-tooltip_text = "esdaf
+tooltip_text = "
 "
 text = "Play"
 
