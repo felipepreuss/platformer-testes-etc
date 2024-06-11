@@ -22,7 +22,7 @@ offset_bottom = 412.0
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[font_size=64]SOULBOUND[/font_size]
+text = "[font_size=64]SOULBOXED[/font_size]
 "
 fit_content = true
 autowrap_mode = 0
