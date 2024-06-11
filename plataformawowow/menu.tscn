@@ -22,8 +22,8 @@ offset_bottom = 412.0
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "BABA
-ABASDFASDF"
+text = "[font_size=64]SOULBOUND[/font_size]
+"
 fit_content = true
 autowrap_mode = 0
 
@@ -38,7 +38,7 @@ offset_bottom = 630.0
 layout_mode = 2
 tooltip_text = "esdaf
 "
-text = "PLAY"
+text = "Play"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
