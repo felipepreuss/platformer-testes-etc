@@ -14,9 +14,10 @@ script = ExtResource("1_t0l05")
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_top = 36.0
-offset_right = 1134.0
-offset_bottom = 341.0
+offset_left = 17.0
+offset_top = 107.0
+offset_right = 1151.0
+offset_bottom = 412.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer"]
 layout_mode = 2
@@ -35,6 +36,8 @@ offset_bottom = 630.0
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+tooltip_text = "esdaf
+"
 text = "PLAY"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
