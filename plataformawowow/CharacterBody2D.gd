@@ -3,7 +3,7 @@ extends CharacterBody2D
 var jumping = false
 var coyote_time = false
 var jump_buffer = false
- 
+var last_floor = false  
 
 var velocidade = 300
 var gravidade = 10
@@ -27,31 +27,34 @@ func _physics_process(delta):
 	else:
 			$AnimatedSprite2D.play("default")
 		
-	if Input.is_action_just_pressed("Pular") && is_on_floor() or coyote_time:
+	if Input.is_action_just_pressed("Pular") && (is_on_floor() or coyote_time):
 		velocity.y = pulo_forca
 		jumping = true
 		defaultState = PULANDO()
+		coyote_time = false
 		 # Reset coyote time when jumping
 		
 		
-	if is_on_floor() and !coyote_time:
+	if is_on_floor():
 			coyote_time = false
 			jumping = false
 	
-	if $Coyote.is_stopped():
-		coyote_time = false
-		jumping = false
+	 
 	if coyote_time:
 		$Coyote.start()
+		 
 		
-	elif Input.is_action_just_pressed("Pular") && !is_on_floor():	
+	if !is_on_floor() && !jumping:	
 		coyote_time = true
+		$Coyote.start()
+		$AnimatedSprite2D.play("falling")
 		
 	elif !is_on_floor():
 		$AnimatedSprite2D.play("falling")
-		$Coyote.stop()  
+		 
 	velocity.y += gravidade
 	move_and_slide()
+	last_floor = is_on_floor()
 	match defaultState:
 		IDLE:
 			PARADO()
@@ -81,7 +84,7 @@ func _jump_state(delta):
 	else:
 		jumping = true
 		defaultState = JUMP
-
-#func _on_coyote_timeout():
-	#coyote_time = false # Replace with function body.
+		
+func _on_coyote_timeout():
+	coyote_time = false # Replace with function body.
 	

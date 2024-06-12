@@ -111,6 +111,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Coyote" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.5
 one_shot = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
