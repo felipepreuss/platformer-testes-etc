@@ -107,8 +107,7 @@ limit_left = 1
 limit_bottom = 610
 
 [node name="Buffer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.1
-one_shot = true
+wait_time = 0.3
 
 [node name="Coyote" type="Timer" parent="CharacterBody2D"]
 wait_time = 0.5
@@ -140,3 +139,6 @@ position = Vector2(-21, -4)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/DEATHZONE"]
 position = Vector2(684.5, 759)
 shape = SubResource("RectangleShape2D_qmpld")
+
+[connection signal="timeout" from="CharacterBody2D/Buffer" to="CharacterBody2D" method="_on_buffer_timeout"]
+[connection signal="timeout" from="CharacterBody2D/Coyote" to="CharacterBody2D" method="_on_coyote_timeout"]

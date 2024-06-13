@@ -18,7 +18,7 @@ enum  {
 var defaultState = IDLE
 
 func _physics_process(delta):
-	print(coyote_time)
+	print(jump_buffer)
 	velocity.x = Input.get_axis("Esquerda","Direita") * velocidade
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
@@ -29,16 +29,24 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Pular") && (is_on_floor() or coyote_time):
 		velocity.y = pulo_forca
+		
 		jumping = true
 		coyote_time = false
 		$Coyote.stop()
 	
-	move_and_slide()
-	last_floor = is_on_floor()
-	if is_on_floor():
+	if Input.is_action_just_pressed("Pular") && !jump_buffer:
+		jump_buffer = true
+		$Buffer.start()
+	
+
+	if is_on_floor() && jump_buffer:
 			coyote_time = false
-			jumping = false
+			jumping = true
+			jump_buffer = true
+			velocity.y = pulo_forca
+			
 			$Coyote.stop()
+			
 	velocity.y += gravidade
 	if !is_on_floor()  && !jumping:	
 		coyote_time = true
@@ -51,14 +59,11 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("falling")
 	elif !is_on_floor():
 		$AnimatedSprite2D.play("falling")
-	
-#func _jump_state(delta):
-#	if is_on_floor():
-	#	jumping = false
-	#	defaultState = FALL
-#	else:
-	#	jumping = true
-		#defaultState = JUMP
 		
+	move_and_slide()
+
 func _on_coyote_timeout():
 	coyote_time = false # Replace with function body.
+	
+func _on_buffer_timeout():
+	jump_buffer = false # Replace with function body.
