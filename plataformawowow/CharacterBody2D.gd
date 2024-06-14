@@ -18,7 +18,7 @@ enum  {
 var defaultState = IDLE
 
 func _physics_process(delta):
-	print(jump_buffer)
+	print(coyote_time)
 	velocity.x = Input.get_axis("Esquerda","Direita") * velocidade
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0

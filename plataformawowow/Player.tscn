@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbuyhqel8byke"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_rwcdc"]
+[ext_resource type="Texture2D" uid="uid://bcvwu2uvu6rsg" path="res://thesheet.png" id="2_qyhwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cryhn"]
+size = Vector2(37, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sa2l"]
+atlas = ExtResource("2_qyhwy")
+region = Rect2(0, 0, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5qe1"]
+atlas = ExtResource("2_qyhwy")
+region = Rect2(0, 21, 15, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7q1i"]
+atlas = ExtResource("2_qyhwy")
+region = Rect2(15, 0, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhkwm"]
+atlas = ExtResource("2_qyhwy")
+region = Rect2(30, 0, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx5su"]
+atlas = ExtResource("2_qyhwy")
+region = Rect2(45, 0, 15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xplct"]
+atlas = ExtResource("2_qyhwy")
+region = Rect2(15, 22, 15, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8exrs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sa2l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5qe1")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7q1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhkwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx5su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xplct")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_rwcdc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(558, 413)
+shape = SubResource("RectangleShape2D_cryhn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(555.5, 414)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_8exrs")
+animation = &"walk"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+ignore_rotation = false
+zoom = Vector2(1.1, 1.1)
+limit_left = 1
+limit_bottom = 610
+
+[node name="Buffer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Coyote" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Buffer" to="." method="_on_buffer_timeout"]
+[connection signal="timeout" from="Coyote" to="." method="_on_coyote_timeout"]

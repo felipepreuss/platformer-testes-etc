@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnhu66jlttldo"]
+[gd_scene load_steps=18 format=3 uid="uid://bnhu66jlttldo"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_t0l05"]
+[ext_resource type="FontFile" uid="uid://bsnwlk551nbdb" path="res://Abaddon Light.ttf" id="2_05w8c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h25x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_md24b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4v0p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbs6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jglif"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4jvm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvvml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e1ejn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33c8r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evc8y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b76wv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws4wy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_45f1w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtrcp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gqfh0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,20 +66,56 @@ offset_right = 379.0
 offset_bottom = 630.0
 
 [node name="Play" type="Button" parent="VBoxContainer"]
+texture_filter = 5
 layout_mode = 2
 tooltip_text = "
 "
+theme_override_colors/font_hover_color = Color(0.423529, 0.929412, 0.929412, 1)
+theme_override_colors/font_outline_color = Color(0.431373, 0.317647, 0.505882, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_05w8c")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5h25x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_md24b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_g4v0p")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dbs6r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jglif")
 text = "Play"
+flat = true
 
 [node name="Options" type="Button" parent="VBoxContainer"]
+texture_filter = 3
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.423529, 0.929412, 0.929412, 1)
+theme_override_colors/font_outline_color = Color(0.431373, 0.317647, 0.505882, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_05w8c")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j4jvm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kvvml")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e1ejn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_33c8r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_evc8y")
 text = "Options
 "
+flat = true
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
+texture_filter = 3
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.423529, 0.929412, 0.929412, 1)
+theme_override_colors/font_outline_color = Color(0.431373, 0.317647, 0.505882, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_05w8c")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b76wv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ws4wy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_45f1w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vtrcp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gqfh0")
 text = "Quit
 "
+flat = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
