@@ -38,6 +38,8 @@ func _physics_process(delta):
 		jump_buffer = true
 		$Buffer.start()
 	
+	if is_on_floor():
+		jumping = false
 
 	if is_on_floor() && jump_buffer:
 			coyote_time = false
@@ -47,19 +49,18 @@ func _physics_process(delta):
 			
 			$Coyote.stop()
 			
-	velocity.y += gravidade
 	if !is_on_floor()  && !jumping:	
 		coyote_time = true
 		$Coyote.start()
 		$AnimatedSprite2D.play("falling")
 	elif not is_on_floor() and jumping:
 		coyote_time = false
-		
 		$Coyote.stop()	
 		$AnimatedSprite2D.play("falling")
 	elif !is_on_floor():
 		$AnimatedSprite2D.play("falling")
 		
+	velocity.y += gravidade
 	move_and_slide()
 
 func _on_coyote_timeout():

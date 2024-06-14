@@ -92,6 +92,7 @@ wait_time = 0.3
 
 [node name="Coyote" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="Buffer" to="." method="_on_buffer_timeout"]
 [connection signal="timeout" from="Coyote" to="." method="_on_coyote_timeout"]
