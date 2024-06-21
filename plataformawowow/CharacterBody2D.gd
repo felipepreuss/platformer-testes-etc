@@ -5,6 +5,8 @@ var coyote_time = false
 var jump_buffer = false
 var last_floor = false  
 
+var carregando = false
+
 var velocidade = 300
 var gravidade = 10
 var pulo_forca = -300
@@ -59,6 +61,19 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("falling")
 	elif !is_on_floor():
 		$AnimatedSprite2D.play("falling")
+	
+	if Input.is_action_just_pressed("Interagir") && !carregando:
+		var item = get_tree().get_nodes_in_group("Interactables")[0]
+		
+		#$ponto_int/held.texture = item.texture
+		
+		
+		item.reparent($ponto_int)
+		carregando = true
+	
+	#if carregando :
+	#	item = $ponto_int.get_position()
+	
 		
 	velocity.y += gravidade
 	move_and_slide()

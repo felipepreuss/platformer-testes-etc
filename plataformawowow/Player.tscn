@@ -94,5 +94,11 @@ wait_time = 0.3
 wait_time = 0.5
 one_shot = true
 
+[node name="ponto_int" type="Node2D" parent="."]
+position = Vector2(577, 416)
+
+[node name="held" type="Sprite2D" parent="ponto_int"]
+position = Vector2(-577, -416)
+
 [connection signal="timeout" from="Buffer" to="." method="_on_buffer_timeout"]
 [connection signal="timeout" from="Coyote" to="." method="_on_coyote_timeout"]
